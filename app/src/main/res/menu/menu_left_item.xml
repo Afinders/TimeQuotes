@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_left_item_memo" android:title="便签"/>
+    <item android:id="@+id/menu_left_item_letter" android:title="信件"/>
+
+    <item android:title="其他">
+        <menu>
+            <item android:id="@+id/menu_left_item_night_mode" android:title="夜间"/>
+            <item android:id="@+id/menu_left_item_settings" android:title="设置"/>
+            <item android:id="@+id/menu_left_item_about_us" android:title="关于"/>
+        </menu>
+    </item>
+</menu>
