@@ -6,7 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -18,6 +24,17 @@ public class LetterFragment extends Fragment {
     public static LetterFragment newInstance(){
 
         return new LetterFragment();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
+        AppCompatActivity appCompatActivity= (AppCompatActivity) getActivity();
+        if (appCompatActivity != null){
+            Toolbar toolbar = appCompatActivity.findViewById(R.id.main_toolbar);
+            appCompatActivity.setSupportActionBar(toolbar);
+        }
     }
 
     @Nullable
@@ -32,15 +49,10 @@ public class LetterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FloatingActionButton addFab = view.findViewById(R.id.letter_add_fab);
-        addFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (getContext() != null){
-                    Intent intent = new Intent(getContext(), LetterEditActivity.class);
-                    getContext().startActivity(intent);
-                }
-            }
-        });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment_letter_toolbar, menu);
     }
 }

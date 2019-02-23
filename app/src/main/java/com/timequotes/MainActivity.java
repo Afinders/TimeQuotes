@@ -1,5 +1,6 @@
 package com.timequotes;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -27,7 +28,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private Fragment nowFragment;
+    private int leftMenuItemType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +70,11 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onDrawerOpened(View drawerView) {
                     super.onDrawerOpened(drawerView);
-//                    if (navigationView != null){
-//                        // TODO: 2019/2/21
-//                    }
+                    if (navigationView != null){
+                        // TODO: 2019/2/21
+                        Log.d("碎片：：", "onDrawerOpened:是那个fragment "+leftMenuItemType);
+
+                    }
                 }
             });
         }
@@ -80,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null){
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             MemoFragment fragment = MemoFragment.newInstance();
-            transaction.add(R.id.main_fl, fragment, "memoFragment");
+            leftMenuItemType = 0;
+            transaction.add(R.id.main_fl, fragment);
             transaction.commit();
         }
     }
@@ -90,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
+                break;
+            case R.id.menu_fragment_letter_edit:
+                Intent intent = new Intent(this, LetterEditActivity.class);
+                startActivity(intent);
                 break;
         }
         return true;
@@ -108,10 +116,12 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if ((MemoFragment.class.getName()).equals(fragmentName)){
             MemoFragment fragment = MemoFragment.newInstance();
-            transaction.replace(R.id.main_fl, fragment, "memoFragment");
+            leftMenuItemType = 0;
+            transaction.replace(R.id.main_fl, fragment);
         }else if ((LetterFragment.class.getName()).equals(fragmentName)){
             LetterFragment fragment = LetterFragment.newInstance();
-            transaction.replace(R.id.main_fl, fragment, "LetterFragment");
+            leftMenuItemType = 1;
+            transaction.replace(R.id.main_fl, fragment);
         }
         transaction.commit();
     }

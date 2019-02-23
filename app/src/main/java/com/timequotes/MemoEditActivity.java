@@ -42,7 +42,7 @@ public class MemoEditActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // TODO: 2019/2/17
         switch (item.getItemId()){
-            case R.id.check:
+            case R.id.menu_memo_edit_check:
                 memoOperation();
                 break;
 //            case R.id.clock:
