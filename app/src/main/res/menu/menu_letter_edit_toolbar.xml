@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_letter_edit_check"
+        android:title="确认"
+        android:icon="@drawable/outline_check_24"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/menu_letter_edit_send"
         android:title="发送"
         android:icon="@drawable/outline_send_24"

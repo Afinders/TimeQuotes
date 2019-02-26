@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/menu_left_item_memo" android:title="便签"/>
-    <item android:id="@+id/menu_left_item_letter" android:title="信件"/>
+    <item
+        android:id="@+id/menu_left_item_memo"
+        android:title="便签"
+        android:icon="@drawable/outline_event_note_24"/>
+    <item
+        android:id="@+id/menu_left_item_letter"
+        android:title="信件"
+        android:icon="@drawable/outline_mail_outline_24"/>
 
     <item android:title="其他">
         <menu>
-            <item android:id="@+id/menu_left_item_night_mode" android:title="夜间"/>
-            <item android:id="@+id/menu_left_item_settings" android:title="设置"/>
-            <item android:id="@+id/menu_left_item_about_us" android:title="关于"/>
+            <item
+                android:id="@+id/menu_left_item_night_mode"
+                android:title="夜间"
+                android:icon="@drawable/baseline_brightness_2_24"/>
+            <item
+                android:id="@+id/menu_left_item_settings"
+                android:title="设置"
+                android:icon="@drawable/outline_settings_24"/>
+            <item
+                android:id="@+id/menu_left_item_about_us"
+                android:title="关于"
+                android:icon="@drawable/outline_help_outline_24"/>
         </menu>
     </item>
 </menu>

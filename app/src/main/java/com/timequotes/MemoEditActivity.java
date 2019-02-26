@@ -1,5 +1,6 @@
 package com.timequotes;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
@@ -10,18 +11,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.timequotes.bean.MemoBean;
 
 import org.litepal.LitePal;
-import org.litepal.crud.LitePalSupport;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
 
 public class MemoEditActivity extends AppCompatActivity {
 
@@ -30,7 +27,6 @@ public class MemoEditActivity extends AppCompatActivity {
     private String oldTitleStr;
     private String oldContentStr;
     private MemoBean memo;
-    private String TAG = "便签编辑";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,7 +36,7 @@ public class MemoEditActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO: 2019/2/17
+        // TODO: 2019/2/17 菜单选项的监听（设置提醒时间和置顶）
         switch (item.getItemId()){
             case R.id.menu_memo_edit_check:
                 memoOperation();
@@ -85,15 +81,10 @@ public class MemoEditActivity extends AppCompatActivity {
     private void memoOperation(){
         String title = titleET.getText().toString();
         String content = contentET.getText().toString();
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH) + 1;
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
-        String saveTimeStr = String.valueOf(year) + "年" + month +
-                "月" + day + "日" +
-                " " + hour + ":" + minute;
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        Date curDate = new Date(System.currentTimeMillis());
+        String saveTimeStr = dateFormat.format(curDate);
         if (TextUtils.isEmpty(oldTitleStr) && TextUtils.isEmpty(oldContentStr)){
             if (!TextUtils.isEmpty(title) || !TextUtils.isEmpty(content)){
                 MemoBean memo = new MemoBean();

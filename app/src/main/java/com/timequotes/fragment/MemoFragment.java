@@ -16,18 +16,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.timequotes.MemoEditActivity;
-import com.timequotes.MemoRecyclerAdapter;
+import com.timequotes.adapter.MemoRecyclerAdapter;
 import com.timequotes.R;
 import com.timequotes.bean.MemoBean;
 
 import org.litepal.LitePal;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MemoFragment extends Fragment {
 
-    private static final String TAG = "碎片";
+    private static final String TAG = "便签碎片";
     private List<MemoBean> memoList;
     private RecyclerView recyclerView;
     private FloatingActionButton addFab;

@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * 该类为使用litepal操作数据库的bean类
  */
-// TODO: 2019/2/11
 public class MemoBean extends LitePalSupport implements Serializable{
 
     private int id;

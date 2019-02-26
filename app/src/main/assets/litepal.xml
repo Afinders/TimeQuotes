@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
-    <dbname value="MemoList"/>
+    <dbname value="TimeQuotes"/>
     <version value="1"/>
 
     <list>
         <mapping class="com.timequotes.bean.MemoBean"/>
+        <mapping class="com.timequotes.bean.LetterBean"/>
     </list>
 </litepal>

@@ -1,19 +1,17 @@
-package com.timequotes;
+package com.timequotes.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.timequotes.R;
 import com.timequotes.bean.MemoBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MemoRecyclerAdapter extends RecyclerView.Adapter<MemoRecyclerAdapter.MemoRecyclerViewHolder> {
@@ -43,7 +41,7 @@ public class MemoRecyclerAdapter extends RecyclerView.Adapter<MemoRecyclerAdapte
         viewHolder.memoTitle.setText(memo.getMemoTitle());
         viewHolder.memoContent.setText(memo.getMemoContent());
         viewHolder.memoSaveTime.setText(memo.getMemoSaveTime());
-        // TODO: 2019/2/22  
+        // TODO: 2019/2/22  设置提醒时间
         viewHolder.memoRemindTime.setText("");
         if (memoOnClickListener != null){
             viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
