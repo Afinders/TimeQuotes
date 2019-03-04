@@ -36,8 +36,11 @@ public class LetterRecyclerAdapter extends RecyclerView.Adapter<LetterRecyclerAd
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-
-        viewHolder.letterContentTv.setText(letterList.get(i).getLetterContent());
+        // TODO: 2019/2/27 需要修改
+        int type = letterList.get(i).getReceiveType();
+        if (type != 0 || type != 1 || type != 2){
+            viewHolder.letterContentTv.setText(letterList.get(i).getLetterContent());
+        }
         if (letterOnClickListener != null){
             viewHolder.letterCardView.setOnClickListener(new View.OnClickListener() {
                 @Override

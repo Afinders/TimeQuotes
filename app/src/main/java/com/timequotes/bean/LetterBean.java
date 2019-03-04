@@ -7,9 +7,19 @@ import java.io.Serializable;
 public class LetterBean extends LitePalSupport implements Serializable{
 
     private int id;
+    private int receiveType;
     private String letterContent;
     private String letterSaveTime;
     private String letterSendTime;
+
+    public int getReceiveType() {
+        return receiveType;
+    }
+
+    public void setReceiveType(int receiveType) {
+        this.receiveType = receiveType;
+    }
+
     private String letterReceiveTime;
     private String letterReceiveMailBox;
 

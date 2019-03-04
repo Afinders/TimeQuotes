@@ -80,7 +80,7 @@ public class LetterFragment extends Fragment {
                 }
             }
         });
-        initDraftRecyclerView();
+//        initDraftRecyclerView();
     }
 
     private void initDraftRecyclerView(){
@@ -133,6 +133,6 @@ public class LetterFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d(TAG, "onResume: ");
-        initDraftRecyclerView();
+//        initDraftRecyclerView();
     }
 }

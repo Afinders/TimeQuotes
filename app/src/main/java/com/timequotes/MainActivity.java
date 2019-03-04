@@ -21,7 +21,6 @@ import com.timequotes.fragment.MemoFragment;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-    private int leftMenuItemType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
                     OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                    menuItem.setCheckable(true);
+                    menuItem.setChecked(true);
+
                     switch (menuItem.getItemId()){
                         // TODO: 2019/2/17 布局碎片的切换
                         case R.id.menu_left_item_memo:
@@ -58,25 +61,10 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        if (mDrawerLayout != null){
-            mDrawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
-                @Override
-                public void onDrawerOpened(View drawerView) {
-                    super.onDrawerOpened(drawerView);
-                    if (navigationView != null){
-                        // TODO: 2019/2/21 抽屉的监听
-                        Log.d("碎片：：", "onDrawerOpened:是那个fragment "+leftMenuItemType);
-
-                    }
-                }
-            });
-        }
-
         //进入app加载的布局
         if (savedInstanceState == null){
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             MemoFragment fragment = MemoFragment.newInstance();
-            leftMenuItemType = 0;
             transaction.add(R.id.main_fl, fragment);
             transaction.commit();
         }
@@ -109,11 +97,9 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if ((MemoFragment.class.getName()).equals(fragmentName)){
             MemoFragment fragment = MemoFragment.newInstance();
-            leftMenuItemType = 0;
             transaction.replace(R.id.main_fl, fragment);
         }else if ((LetterFragment.class.getName()).equals(fragmentName)){
             LetterFragment fragment = LetterFragment.newInstance();
-            leftMenuItemType = 1;
             transaction.replace(R.id.main_fl, fragment);
         }
         transaction.commit();
